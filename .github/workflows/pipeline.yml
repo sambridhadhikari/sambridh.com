@@ -77,8 +77,8 @@ jobs:
       - name: Scale down
         run: | 
           kubectl get pods -n ${NAMESPACE}
-          kubectl scale --replicas=0 -n ${NAMESPACE} statefulset/${NAME} || true
-          kubectl get statefulset -n ${NAMESPACE}
+          kubectl scale --replicas=0 -n ${NAMESPACE} deploment/${NAME} || true
+          kubectl get deployments -n ${NAMESPACE}
 
       - name: Install
         run: | 
@@ -91,5 +91,5 @@ jobs:
 
       - name: Scale up
         run: | 
-          kubectl scale --replicas=${REPLICAS} -n ${NAMESPACE} statefulset/${NAME}
-          kubectl get statefulset -n ${NAMESPACE}
+          kubectl scale --replicas=${REPLICAS} -n ${NAMESPACE} deployment/${NAME}
+          kubectl get deployments -n ${NAMESPACE}
