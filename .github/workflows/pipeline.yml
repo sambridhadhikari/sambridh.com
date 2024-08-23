@@ -8,7 +8,7 @@ env:
   CLUSTER_CONFIG: ${{ secrets.CLUSTER_CONFIG }}
   KUBECONFIG: kubeconfig
   REPO: ghcr.io/sambridhadhikari
-  NAME: sambridh-website
+  NAME: sambridh.com
   NAMESPACE: sambridh
   REPLICAS: 1
   HELM: https://get.helm.sh/helm-v3.3.1-linux-amd64.tar.gz
