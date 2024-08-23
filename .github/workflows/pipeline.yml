@@ -47,7 +47,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./
-          file: ./Dockerfile
+          file: ./deploy/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ${{ env.REPO }}/${{ env.NAME }}
@@ -83,11 +83,11 @@ jobs:
       - name: Install
         run: | 
           helm template \
-            -f $PWD/values.yaml \
+            -f $PWD/deploy/values.yaml \
             --set name=${NAME} \
             --set namespace=${NAMESPACE} \
             --set repository=${REPO}/${NAME}@${DIGEST} \
-            ${GITHUB_WORKSPACE}/kubernetes | kubectl apply -f -
+            ${GITHUB_WORKSPACE}/deploy/kubernetes | kubectl apply -f -
 
       - name: Scale up
         run: | 
